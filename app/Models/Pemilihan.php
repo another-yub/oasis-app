@@ -10,5 +10,5 @@ class Pemilihan extends Model
         'waktu_memilih',
         'siswa_id',
         'kandidat_id',
-    ]
+    ];
 }

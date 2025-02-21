@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengumuman', function (Blueprint $table) {
+        Schema::create('pengumumans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('admin_id');
             $table->string('judul');
             $table->text('isi');
-            $table->foreign('admin_id')->references('id')->on('users');
+            $table->foreign('admin_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengumuman');
+        Schema::dropIfExists('pengumumans');
     }
 };

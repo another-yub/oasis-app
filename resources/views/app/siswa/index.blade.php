@@ -41,7 +41,11 @@
                 <td>{{ $siswa->user->nama_lengkap }}</td>
                 <td>{{ $siswa->nis }}</td>
                 <td>{{ $siswa->kelas }}</td>
-                <td>{{ $siswa->status_memilih }}</td>
+                @if ($siswa->status_memilih == 'belum')
+                <td id="belum">{{ $siswa->status_memilih }} </td>
+                @elseif ($siswa->status_memilih == 'sudah')
+                <td id="sudah">{{ $siswa->status_memilih }} </td>
+                @endif
                 <td>
                     <a href="/siswa/edit/{{ $siswa->id }}" class="btn btn-primary btn-sm">edit</a> | <a href="/siswa/delete/{{ $siswa->id }}" class="btn btn-sm btn-danger">del</a>
                 </td>

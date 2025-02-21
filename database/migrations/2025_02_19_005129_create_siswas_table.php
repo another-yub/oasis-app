@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nis')->unique();
             $table->string('kelas');
             $table->enum('status_memilih', ['sudah', 'belum']);
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

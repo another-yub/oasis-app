@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('siswa_id');
             $table->unsignedBigInteger('kandidat_id');
             $table->timestamp('waktu_memilih');
-            $table->foreign('siswa_id')->references('id')->on('siswas');
-            $table->foreign('kandidat_id')->references('id')->on('kandidats');
+            $table->foreign('siswa_id')->references('id')->on('siswas')->cascadeOnDelete();
+            $table->foreign('kandidat_id')->references('id')->on('kandidats')->cascadeOnDelete();
             $table->timestamps();
         });
     }

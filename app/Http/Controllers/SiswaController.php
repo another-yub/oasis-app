@@ -66,6 +66,7 @@ class SiswaController extends Controller
             
             return redirect()->route('siswa.index')->with(['success' => 'Data berhasil di hapus :)']);
         } catch (\Throwable $th) {
+            dd($th);
             return redirect()->route('siswa.index')->with(['error' => 'Data gagal di hapus :(']);
         }
     }

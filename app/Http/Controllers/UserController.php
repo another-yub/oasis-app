@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Siswa;
 
 class UserController extends Controller
 {
@@ -68,6 +69,7 @@ class UserController extends Controller
 
             return redirect()->route('user.index')->with(['success' => 'Data berhasil di hapus :)']);
         } catch (\Throwable $th) {
+            dd($th);
             return redirect()->route('user.index')->with(['error' => 'Data gagal di simpan']);
         }
     }

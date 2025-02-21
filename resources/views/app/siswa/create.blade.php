@@ -31,8 +31,8 @@
     <div class="mt-2">
         <label for="status_memilih">Status Memilih : </label>
         <select name="status_memilih" id="status_memilih" class="form-control" required>
-            <option value="sudah">sudah</option>
             <option value="belum">belum</option>
+            <option value="sudah">sudah</option>
         </select>
     </div>  
     <div class="mt-3 text-end">

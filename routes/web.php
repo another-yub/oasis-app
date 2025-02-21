@@ -4,11 +4,27 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KandidatController;
-use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\SiswaController;   
 use App\Http\Controllers\PemilihanController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PengumumanController;
+
+// route auth
+Route::get('/login', [LoginController::class, 'showlogin'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+
+// route logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
 
 //route home
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
+//MIDDLEWARE AUTH
+Route::middleware(['auth'])->group(function (){
+
+
 
 //route user
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
@@ -38,3 +54,13 @@ Route::get('/kandidat/delete/{id}', [KandidatController::class, 'delete'])->name
 Route::get('/pemilihan', [PemilihanController::class, 'index'])->name('pemilihan.index');
 Route::get('/pemilihan/edit/{id}', [PemilihanController::class, 'edit'])->name('pemilihan.edit');
 Route::post('/pemilihan/update', [PemilihanController::class, 'update'])->name('pemilihan.update');
+
+// route pengumuman
+Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
+Route::get('/pengumuman', [PengumumanController::class, 'create'])->name('pengumuman.create');
+Route::post('/pengumuman', [PengumumanController::class, 'store'])->name('pengumuman.store');
+Route::get('/pengumuman/edit/{id}', [PengumumanController::class, 'edit'])->name('pengumuman.edit');
+Route::post('/pengumuman/update', [PengumumanController::class, 'update'])->name('pengumuman.update');
+Route::get('/pengumuman/delete/{id}', [PengumumanController::class, 'delete'])->name('pengumuman.delete');
+
+});

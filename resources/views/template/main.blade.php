@@ -13,6 +13,15 @@
         #logout {
             color: white;
         }
+        #sudah {
+          font-weight: bolder;
+          color: green;
+        }
+        #belum {
+          font-weight: bolder;
+          color: red;
+        }
+
     </style>
   </head>
   <body>
@@ -44,7 +53,10 @@
                 </li>
             </ul>
             <span class="navbar-text">
-                <a href="" class="btn btn-sm btn-danger" id="logout">logout</a>                
+              <form action="/logout" method="POST">
+                @csrf <!-- Jika menggunakan Laravel, tambahkan CSRF token -->
+                <button type="submit" class="btn btn btn-sm btn-danger" id="danger-button">logout</button>
+            </form>
             </span>
           </div>
         </div>
