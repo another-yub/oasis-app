@@ -1,4 +1,4 @@
-@extends('template.main')
+@extends('template.public')
 @section('content')
 <div class="container mt-4">
     <h1>Welcome OasisApp</h1>
@@ -29,10 +29,8 @@
                 <td>{{ $kandidat->nama_kandidat }}</td>
                 <td>{{ $kandidat->visi }}</td>
                 <td>{{ $kandidat->misi }}</td>
-                @foreach ($totalSuara as $total)
-                <td>{{ $total['perolehan_suara'] }}</td>
-                <td>{{ $total['persentase'] }}</td>
-                @endforeach
+                <td>{{ $totalSuara[$kandidat->id]['perolehan_suara'] }}</td>
+                <td>{{ $totalSuara[$kandidat->id]['persentase'] }}</td>
             </tr>
                 @empty
                     <div class="alert alert-danger">

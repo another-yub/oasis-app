@@ -36,6 +36,7 @@
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="/">home</a>
               </li>
+              @if (auth()->user()->role == 'admin')
               <li class="nav-item">
                 <a class="nav-link" href="/user">user</a>
               </li>
@@ -45,12 +46,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="/kandidat">kandidat</a>
               </li>
+              @else
               <li class="nav-item">
                 <a href="/pemilihan" class="nav-link">pemilihan</a>
               </li>
-                <li class="nav-item">
-                  <a href="/pengumuman" class="nav-link">pengumuman</a>
-                </li>
+               
+              @endif
             </ul>
             <span class="navbar-text">
               <form action="/logout" method="POST">

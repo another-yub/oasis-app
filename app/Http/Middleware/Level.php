@@ -15,16 +15,16 @@ class Level
      */
     public function handle(Request $request, Closure $next, ...$levels): Response
     {
-        if(auth()->user ()){
+        if(auth()->user()){
             foreach($levels as $level)
             {
-                if(auth()->user()->level == $level)
+                if(auth()->user()->role == $level)
                 {
                     return $next($request);
                 }
             }
         }
 
-        return redirect()->back()->with('gagal', 'Anda tidak memiliki akses ');
+        return redirect()->back()->with('error', 'Anda tidak memiliki akses :)');
     }
 }

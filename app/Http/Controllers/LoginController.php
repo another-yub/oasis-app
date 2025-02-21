@@ -24,6 +24,10 @@ class LoginController extends Controller
         if(Auth::attempt($masuk)){
             $request->session()->regenerate();
 
+            if(auth()->user()->role == "siswa"){
+                return redirect('/pemilihan');
+            }
+
             return redirect()->intended('/')->with(['successlogin' => 'Autentikasi login Berhasil']);
         }
         return back()->with(['error' => 'Login gagal email / password salah']);
@@ -34,6 +38,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('show.login')->with(['success' => 'Anda berhasil logout :)']);
+        return redirect()->route('login')->with(['success' => 'Anda berhasil logout :)']);
     }
 }
